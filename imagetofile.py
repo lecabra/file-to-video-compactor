@@ -1,9 +1,9 @@
 from PIL import Image
 from glob import glob
 import os
-from numba import njit
 
 
+# Get sequence of images and convert to binary file
 def images_to_binary():
     global extension
     extension = ''
@@ -29,7 +29,7 @@ def images_to_binary():
                     break
 
             else:
-                print(f"Lendo imagem >{img}<")
+                print(f"Reading >{img}< ...")
                 _bindata = ''
 
                 for x in range(1920):
@@ -45,7 +45,7 @@ def images_to_binary():
                             case(255,0,0): # vermelho
                                 f.write(_bindata)
                                 f.close()
-                                print("Processo finalizado.")
+                                print("Done!")
                                 break
                     else:
                         continue
@@ -53,7 +53,7 @@ def images_to_binary():
 
                 f.write(_bindata)
     
-
+# Compile binary file to original format
 def binary_to_file():
 
     n = int(extension, 2)

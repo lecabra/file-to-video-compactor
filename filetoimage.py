@@ -8,6 +8,7 @@ import os
 
 
 def create_binary(path:str):
+    print(f"Creating binary for: {path}")
     global file_ext
     file_name, file_ext = os.path.splitext(path)
     
@@ -27,6 +28,7 @@ def create_binary(path:str):
 def binary_to_image():
     try:
         os.mkdir('frames/') #cria a pasta frames
+        print("'frames' folder created!")
     except:
         pass
 
@@ -36,7 +38,7 @@ def binary_to_image():
         _splitbin = list(_bin)
         _file = 0
 
-        print("Gerando imagens...")
+        print("Converting file to images...")
         while not _var == len(_splitbin)-1:
             img = Image.new(mode="RGB", size=(1920, 1080),  color = (255, 0, 0))
 
@@ -59,7 +61,7 @@ def binary_to_image():
             
             
             img.save(f"frames/frame_{_file}.png")
-            print(f"Arquivo {_file} renderizado com sucesso.")
+            print(f"File: {_file+1} rendering done.")
             _file += 1
 
         # ------------------------------------------------ #
